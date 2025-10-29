@@ -1,0 +1,23 @@
+# =========================
+# Okrika Grammar School (OGS) - Netlify Build Config
+# =========================
+
+[build]
+  base = "frontend"
+  publish = "dist"
+  command = "npm install && npm run build"
+
+[build.environment]
+  NODE_VERSION = "22.0.0"
+
+# Redirect all routes to index.html (for React / Vite SPA routing)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Cache settings (optional)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
