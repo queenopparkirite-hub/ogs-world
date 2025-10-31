@@ -1,10 +1,8 @@
-# === render.yaml ===
 services:
   - type: web
     name: ogs-world-backend
     env: node
     plan: free
-    region: oregon
     buildCommand: cd backend && npm install
     startCommand: cd backend && npm start
     envVars:
@@ -14,21 +12,22 @@ services:
         value: 10000
       - key: MONGO_URI
         sync: false
+      - key: PAYSTACK_SECRET
+        sync: false
+      - key: PAYSTACK_PUBLIC
+        sync: false
       - key: CLOUDINARY_CLOUD_NAME
         sync: false
       - key: CLOUDINARY_API_KEY
         sync: false
       - key: CLOUDINARY_API_SECRET
         sync: false
-      - key: PAYSTACK_PUBLIC_KEY
-        sync: false
-      - key: PAYSTACK_SECRET_KEY
-        sync: false
       - key: JWT_SECRET
         sync: false
-      - key: JWT_EXPIRES_IN
-        value: 7d
-      - key: ADMIN_EMAIL
-        value: innocentisrael452@gmail.com
-      - key: ADMIN_PASSWORD
-        value: OGSSUPERADMINlink@25
+
+  - type: web
+    name: ogs-world-frontend
+    env: static
+    plan: free
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
