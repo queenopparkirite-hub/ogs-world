@@ -1,0 +1,44 @@
+# Exported from Render on 2025-10-31T00:07:23Z
+version: "1"
+projects:
+- name: My project
+  environments:
+  - name: Production
+    services:
+    - type: web
+      name: my-ogs-world
+      runtime: node
+      repo: https://github.com/queenopparkirite-hub/ogs-world
+      plan: free
+      envVars:
+      - key: PORT
+        sync: false
+      - key: PAYSTACK_SECRET
+        sync: false
+      - key: NODE_ENV
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      - key: JWT_EXPIRES_IN
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: PAYSTACK_PUBLIC_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      region: frankfurt
+      buildCommand: npm install
+      startCommand: npm run start
+      autoDeployTrigger: commit
+      rootDir: backend
